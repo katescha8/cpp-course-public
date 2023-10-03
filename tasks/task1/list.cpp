@@ -11,7 +11,7 @@ List::List()
 bool
 List::is_empty()
 {
-    if(first == nullptr && last == nullptr) {
+    if(first == nullptr) {
         return true;
     }
     else {
@@ -94,6 +94,8 @@ List::remove_back()
     if (is_empty()) return;
     else {
         Node* p = first;
+        if(p->next == nullptr)
+            first = nullptr;
         while (p) {
             if(p->next == last) {
                 p->next = nullptr;
@@ -109,6 +111,7 @@ bool
 List::remove(const Node* _node)
 {
     if (is_empty()) return false;
+    else if(_node == nullptr) return false;
     else if(_node == first) {
         remove_front();
         return true;
