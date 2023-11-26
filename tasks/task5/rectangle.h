@@ -9,6 +9,9 @@ class Rectangle
         {
             Length = l;
             Breadth = b;
+            if (Length <= 0 || Breadth <= 0) {
+            throw std::invalid_argument("Invalid parametrs for rectangle");
+        }
         }
         int Area()
         {
@@ -28,12 +31,13 @@ int CalculateRectArea(int l, int b)
 {
     Rectangle *p = new Rectangle(l, b);
     int area = p->Area();
+    delete p;
     return area;
 }
 
 double CalculateRectRelationsOfTheParties(int l, int b)
 {
-    Rectangle *p = new Rectangle(l, b);
+    Rectangle *p = new Rectangle(l, b); //?
     double relation = p->RelationsOfTheParties();
     delete p;
     return relation;
